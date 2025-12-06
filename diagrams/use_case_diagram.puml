@@ -1,0 +1,83 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+' --- COLOR STYLING ---
+' Light orange background for the whole image
+skinparam backgroundColor #FFF8E1
+
+' Styling for the Use Cases (Ovals)
+skinparam usecase {
+    BackgroundColor #FFE0B2
+    BorderColor #F57C00
+    ArrowColor #F57C00
+    FontName Arial
+}
+
+' Styling for the Packages (Boxes)
+skinparam package {
+    BackgroundColor #FFECB3
+    BorderColor #F57C00
+    FontColor #E65100
+    FontName Arial
+}
+
+' Styling for the Actors (Stick figures)
+skinparam actor {
+    BackgroundColor #FB8C00
+    BorderColor #EF6C00
+    FontName Arial
+}
+' ---------------------
+
+' Actors
+actor "User" as user
+actor "Admin User" as admin
+
+' Admin inherits generic User capabilities
+admin --|> user
+
+package "Bulletin Board App" {
+
+    rectangle "Authentication" {
+        usecase "Register New User" as UC_Register
+        usecase "Log In" as UC_Login
+        usecase "Log Out" as UC_Logout
+        usecase "Forgot Password" as UC_Forgot
+    }
+
+    rectangle "Note Management" {
+        usecase "View Notes List" as UC_ListNotes
+        usecase "View Note Detail" as UC_ViewNote
+        usecase "Create Note" as UC_CreateNote
+        usecase "Edit Note" as UC_EditNote
+        usecase "Delete Note" as UC_DeleteNote
+    }
+
+    rectangle "User Management (Admin)" {
+        usecase "View Users List" as UC_ListUsers
+        usecase "Create User" as UC_CreateUser
+        usecase "Edit User" as UC_EditUser
+        usecase "Delete User" as UC_DeleteUser
+    }
+}
+
+' User Relationships
+user --> UC_Register
+user --> UC_Login
+user --> UC_Logout
+user --> UC_Forgot
+user --> UC_ListNotes
+user --> UC_ViewNote
+user --> UC_CreateNote
+user --> UC_EditNote
+user --> UC_DeleteNote
+
+' Admin Specific Relationships
+admin --> UC_ListUsers
+admin --> UC_CreateUser
+admin --> UC_EditUser
+admin --> UC_DeleteUser
+
+@enduml

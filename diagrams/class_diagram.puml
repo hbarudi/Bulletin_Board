@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FFF8E1
+skinparam classAttributeIconSize 0
+
+' --- COLOR STYLING ---
+skinparam class {
+    BackgroundColor #FFE0B2
+    ArrowColor #E65100
+    BorderColor #F57C00
+    HeaderBackgroundColor #FB8C00
+    FontName Arial
+}
+' ---------------------
+
+package "django.contrib.auth" {
+    class User {
+        + username : String
+        + password : String
+        + email : String
+        + is_staff : Boolean
+        + is_superuser : Boolean
+    }
+}
+
+package "notes.models" {
+    class Note {
+        + title : String
+        + content : Text
+        + created_at : DateTime
+        + author : ForeignKey <User>
+        __
+        + __str__() : String
+    }
+}
+
+' Relationships
+' One User can create Many Notes
+User "1" --> "*" Note : creates >
+
+@enduml

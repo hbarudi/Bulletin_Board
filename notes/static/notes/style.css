@@ -1,0 +1,74 @@
+/*
+Theme Colors:
+Background: #402000 (Very Dark Brown)
+Main Theme: #FF8000 (Vivid Orange)
+Text:       #FFB000 (Light Orange/Gold)
+Border:     #BF6000 (Darker Orange)
+Bright:     #FFFF00 (Yellow)
+*/
+
+body {
+    background-color: #402000;
+    color: #FFB000;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Headers */
+h1, h2, h3 {
+    color: #FF8000;
+}
+
+/* Links */
+a {
+    color: #FFFF00;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FF8000;
+    text-decoration: underline;
+}
+
+/* Horizontal Rule (The lines) */
+hr {
+    border: 1px solid #BF6000;
+}
+
+/* Form Inputs */
+input, textarea {
+    background-color: #593000; /* Slightly lighter brown for inputs */
+    border: 1px solid #BF6000;
+    color: #FFFF00;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Buttons */
+button {
+    background-color: #FF8000;
+    color: #402000; /* Dark text on bright button for contrast */
+    border: 2px solid #BF6000;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #FFFF00;
+}
+
+/* List Items (Notes) */
+ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+li {
+    border: 1px solid #BF6000;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #4D2600; /* Slightly lighter than body bg */
+}

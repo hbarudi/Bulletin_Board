@@ -1,0 +1,73 @@
+@startuml
+autonumber
+skinparam backgroundColor #FFF8E1
+
+' --- COLOR STYLING ---
+
+' Specific styling for the Database Icon
+skinparam database {
+    BackgroundColor #FFE0B2
+    BorderColor #E65100
+    FontName Arial
+}
+
+skinparam sequence {
+    ' Lines and Arrows
+    ArrowColor #E65100
+    LifeLineBorderColor #F57C00
+    LifeLineBackgroundColor #FFECB3
+
+    ' Participants (The boxes at the top)
+    ParticipantBorderColor #E65100
+    ParticipantBackgroundColor #FFE0B2
+    ParticipantFontName Arial
+    ParticipantFontSize 14
+
+    ' Actors (The stick figure)
+    ActorBorderColor #E65100
+    ActorBackgroundColor #FB8C00
+    ActorFontName Arial
+}
+' ---------------------
+
+actor "User" as User
+participant "Browser" as Browser
+participant "Django View\n(Controller)" as View
+participant "Note Form" as Form
+participant "Note Model" as Model
+database "Database\n(SQLite)" as DB
+
+' -- Flow Start --
+User -> Browser: Enters Title & Content
+User -> Browser: Clicks "Save" button
+
+Browser -> View: POST /note/new/
+activate View #FFCC80
+
+View -> Form: Validate Data
+activate Form #FFCC80
+Form --> View: Data is Valid
+deactivate Form
+
+View -> Model: Create Note Object
+activate Model #FFCC80
+
+Model -> DB: INSERT INTO notes_note
+activate DB #FFCC80
+DB --> Model: Success
+deactivate DB
+
+Model --> View: Returns Note Object
+deactivate Model
+
+View -> Browser: HTTP 302 Redirect (to Note List)
+deactivate View
+
+Browser -> View: GET / (Note List)
+activate View #FFCC80
+View -> Browser: Render Note List Page
+deactivate View
+
+Browser -> User: Displays new Note in List
+
+@enduml

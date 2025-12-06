@@ -1,0 +1,16 @@
+# Ignore virtual environment
+.venv/
+
+# Ignore Editor configuration
+.idea/
+
+# Ignore compiled python files
+__pycache__/
+*.pyc
+
+# Ignore the local database (optional, but good practice)
+# db.sqlite3
+# including the database for showing my first note and user
+
+# Ignore collected static files (generated files)
+staticfiles/
